@@ -1,0 +1,25 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: cart-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: cart-db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql
+
+  app:
+    build: .
+    container_name: app
+    image: product-image
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+
+volumes:
+  postgres-data:
