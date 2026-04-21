@@ -11,7 +11,7 @@ import java.util.Set;
 public class ProductService {
 
     private final RestTemplate restTemplate;
-    private static final String apiUrl="http://localhost:4001/s2s/products";
+    private static final String apiUrl="http://34.41.152.3:8080/s2s/products";
     record ProductIsValidRequest(Set<String> ids){
     }
 
