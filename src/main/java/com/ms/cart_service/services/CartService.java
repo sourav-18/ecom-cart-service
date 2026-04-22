@@ -18,8 +18,10 @@ public class CartService {
     private final ProductService productService;
 
     public Cart create(Cart request){
+        System.out.println("-----------------------------enter------------------");
         Boolean isValid=productService.isProductValid(request.getProducts()
                 .stream().map(CartProduct::getId).collect(Collectors.toSet()));
+        System.out.println("-----------------------------after------------------");
         if(!isValid){
             throw new RuntimeException("product not found");
         }
